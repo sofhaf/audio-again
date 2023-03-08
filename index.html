@@ -2,29 +2,36 @@
   const runaway = new Audio('runawayRemix.mp3')
   const glowURL = 'glow.png'
   const glowR = 'glowR.png'
-  let fly
+  let rosie
 
+  
+    function createFire(x, y) {
+    const fly = document.createElement('img')
+    fly.src = glowURL + '#' + Math.random()
+    fly.style.position = 'absolute'
+    fly.style.width = 66
+    fly.style.left = x + 'px'
+    fly.style.top = y + 'px'
+    return fly
+  }
+  
   function audioFunction() {
     if (runaway.paused) {
       runaway.play()
-      fly.src = glowR
+      rosie.src = glowR
     } else {
       runaway.pause()
-      fly.src = glowURL
+      rosie.src = glowURL
     }
   }
 
   function setup() {
     document.body.style.backgroundColor = '#070805'
-    fly = document.createElement('img')
-    fly.src = glowURL
-    fly.style.position = 'absolute'
-    fly.style.width = 666
-    fly.style.left = 100
-    fly.style.top = 100
-    document.body.appendChild(fly)
+   
+    rosie = createFire(100, 100)
+    document.body.appendChild(rosie)
 
-    fly.onclick = function() {
+    rosie.onclick = function() {
       audioFunction()
     }
   }
